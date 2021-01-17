@@ -2,7 +2,6 @@
 
 - Django 3.1.4
 - Bootstrap5 beta
-- MDX-Deck 4.1.1
-
-## Presentation
+- Backslide 3.0.0
+- gh-pages: 3.1.0
 
