@@ -1,0 +1,134 @@
+{% extends 'vote/layout.html' %}
+
+{% block css %}
+    <style>
+        .card img {
+            width: 200px;
+            height: 150px;
+        }
+
+        .content__wrapper {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 1rem;
+        }
+
+        .list-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .list-wrapper form {
+            margin: 0.5rem
+        }
+
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="content__wrapper">
+        <div class="list-wrapper">
+        {% if subjects %}
+            {% for subject in subjects %}
+                <form method="post">{% csrf_token %}
+                    <div class="card" style="width: 18rem;">
+                      <img src="https://changhoi.github.io/images/logo.jpg" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">{{ subject.title }}</h5>
+                        <p class="card-text">{{ subject.content }}</p>
+                          <input type="hidden" name="id" value="{{ subject.id }}">
+                        <button type="submit" name="type" value="like" class="btn btn-primary">Likes {{ subject.like }}</button>
+                        <button type="submit" name="type" value="dislike" class="btn btn-primary">Dislikes {{ subject.dislike }}</button>
+                      </div>
+                    </div>
+                </form>
+            {% endfor %}
+            {% for subject in subjects %}
+                <form method="post">{% csrf_token %}
+                    <div class="card" style="width: 18rem;">
+                      <img src="https://changhoi.github.io/images/logo.jpg" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">{{ subject.title }}</h5>
+                        <p class="card-text">{{ subject.content }}</p>
+                          <input type="hidden" name="id" value="{{ subject.id }}">
+                        <button type="submit" name="type" value="like" class="btn btn-primary">Likes {{ subject.like }}</button>
+                        <button type="submit" name="type" value="dislike" class="btn btn-primary">Dislikes {{ subject.dislike }}</button>
+                      </div>
+                    </div>
+                </form>
+            {% endfor %}
+            {% for subject in subjects %}
+                <form method="post">{% csrf_token %}
+                    <div class="card" style="width: 18rem;">
+                      <img src="https://changhoi.github.io/images/logo.jpg" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">{{ subject.title }}</h5>
+                        <p class="card-text">{{ subject.content }}</p>
+                          <input type="hidden" name="id" value="{{ subject.id }}">
+                        <button type="submit" name="type" value="like" class="btn btn-primary">Likes {{ subject.like }}</button>
+                        <button type="submit" name="type" value="dislike" class="btn btn-primary">Dislikes {{ subject.dislike }}</button>
+                      </div>
+                    </div>
+                </form>
+            {% endfor %}
+            {% for subject in subjects %}
+                <form method="post">{% csrf_token %}
+                    <div class="card" style="width: 18rem;">
+                      <img src="https://changhoi.github.io/images/logo.jpg" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">{{ subject.title }}</h5>
+                        <p class="card-text">{{ subject.content }}</p>
+                          <input type="hidden" name="id" value="{{ subject.id }}">
+                        <button type="submit" name="type" value="like" class="btn btn-primary">Likes {{ subject.like }}</button>
+                        <button type="submit" name="type" value="dislike" class="btn btn-primary">Dislikes {{ subject.dislike }}</button>
+                      </div>
+                    </div>
+                </form>
+            {% endfor %}
+            {% for subject in subjects %}
+                <form method="post">{% csrf_token %}
+                    <div class="card" style="width: 18rem;">
+                      <img src="https://changhoi.github.io/images/logo.jpg" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">{{ subject.title }}</h5>
+                        <p class="card-text">{{ subject.content }}</p>
+                          <input type="hidden" name="id" value="{{ subject.id }}">
+                        <button type="submit" name="type" value="like" class="btn btn-primary">Likes {{ subject.like }}</button>
+                        <button type="submit" name="type" value="dislike" class="btn btn-primary">Dislikes {{ subject.dislike }}</button>
+                      </div>
+                    </div>
+                </form>
+            {% endfor %}
+            {% for subject in subjects %}
+                <form method="post">{% csrf_token %}
+                    <div class="card" style="width: 18rem;">
+                      <img src="https://changhoi.github.io/images/logo.jpg" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">{{ subject.title }}</h5>
+                        <p class="card-text">{{ subject.content }}</p>
+                          <input type="hidden" name="id" value="{{ subject.id }}">
+                        <button type="submit" name="type" value="like" class="btn btn-primary">Likes {{ subject.like }}</button>
+                        <button type="submit" name="type" value="dislike" class="btn btn-primary">Dislikes {{ subject.dislike }}</button>
+                      </div>
+                    </div>
+                </form>
+            {% endfor %}
+            {% for subject in subjects %}
+                <form method="post">{% csrf_token %}
+                    <div class="card" style="width: 18rem;">
+                      <img src="https://changhoi.github.io/images/logo.jpg" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">{{ subject.title }}</h5>
+                        <p class="card-text">{{ subject.content }}</p>
+                          <input type="hidden" name="id" value="{{ subject.id }}">
+                        <button type="submit" name="type" value="like" class="btn btn-primary">Likes {{ subject.like }}</button>
+                        <button type="submit" name="type" value="dislike" class="btn btn-primary">Dislikes {{ subject.dislike }}</button>
+                      </div>
+                    </div>
+                </form>
+            {% endfor %}
+        {% endif %}
+        </div>
+    </div>
+{% endblock %}
