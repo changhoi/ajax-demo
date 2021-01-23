@@ -2,6 +2,7 @@ from django.http import JsonResponse
 from django.shortcuts import render
 from django.views import View
 from .models import Subject
+import json
 
 # Create your views here.
 
@@ -34,8 +35,12 @@ class AjaxView(View):
     template_name = 'vote/ajax_template.html'
 
     def get(self, request):
-        return render(request, self.template_name)
+        subject_list = Subject.objects.all()
+        ctx = {"subjects": subject_list}
+        return render(request, self.template_name, ctx)
 
     def post(self, request):
+        req = json.loads(request.body)
+
         return JsonResponse({'message': 'Hello JSON'})
 

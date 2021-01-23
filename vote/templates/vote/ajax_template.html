@@ -30,20 +30,38 @@
         <div class="list-wrapper">
         {% if subjects %}
             {% for subject in subjects %}
-                <form method="post">{% csrf_token %}
-                    <div class="card" style="width: 18rem;">
-                      <img src="https://changhoi.github.io/images/logo.jpg" class="card-img-top" alt="...">
-                      <div class="card-body">
-                        <h5 class="card-title">{{ subject.title }}</h5>
-                        <p class="card-text">{{ subject.content }}</p>
-                          <input type="hidden" name="id" value="{{ subject.id }}">
-                        <button type="submit" name="type" value="like" class="btn btn-primary">Likes {{ subject.like }}</button>
-                        <button type="submit" name="type" value="dislike" class="btn btn-primary">Dislikes {{ subject.dislike }}</button>
-                      </div>
-                    </div>
-                </form>
+                <div id="form-{{ subject.id }}" class="card" style="width: 18rem;">
+                  <img src="https://changhoi.github.io/images/logo.jpg" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">{{ subject.title }}</h5>
+                    <p class="card-text">{{ subject.content }}</p>
+                    <button type="submit" onclick="onClickBtn({{ subject.id }}, 'like')" name="type" value="like" class="btn btn-primary">Likes {{ subject.like }}</button>
+                    <button type="submit" onclick="onClickBtn({{ subject.id }}, 'dislike')" name="type" value="dislike" class="btn btn-primary">Dislikes {{ subject.dislike }}</button>
+                  </div>
+                </div>
             {% endfor %}
         {% endif %}
         </div>
     </div>
+{% endblock %}
+
+{% block js %}
+    <script>
+        const request = new XMLHttpRequest();
+
+        const onClickBtn = (id, type) => {
+            const url= '/subjects/ajax'
+            request.open("POST", url, true);
+            request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            request.send(JSON.stringify({type, id}));
+        }
+
+        const handleResponse = () => {
+            if (request.status <= 400) {
+                const {id, type} = JSON.parse(request.response);
+
+                const element = document.querySelector(`#form-${id} buttom[value=${type}]`);
+            }
+        }
+    </script>
 {% endblock %}
