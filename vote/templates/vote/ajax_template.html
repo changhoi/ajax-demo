@@ -50,17 +50,27 @@
         const request = new XMLHttpRequest();
 
         const onClickBtn = (id, type) => {
-            const url= '/subjects/ajax'
+            const url= '/subjects/ajax/'
             request.open("POST", url, true);
             request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-            request.send(JSON.stringify({type, id}));
+            request.send(JSON.stringify({type: type, id: id}));
         }
 
         const handleResponse = () => {
             if (request.status <= 400) {
                 const {id, type} = JSON.parse(request.response);
 
-                const element = document.querySelector(`#form-${id} buttom[value=${type}]`);
+                const element = document.querySelector(`#form-${id} button[value=${type}]`);
+                const origin = element.innerText;
+                const [typeStr, num] = origin.split(' '); // ["Likes", '1']
+                const count = Number(num) + 1;
+                element.innerText = `${typeStr} ${count}`;
+            }
+        }
+
+        request.onreadystatechange = () => {
+            if (request.readyState === XMLHttpRequest.DONE) {
+                handleResponse();
             }
         }
     </script>
